@@ -44,7 +44,10 @@ export default {
       return require(`../assets/img/${result.original_language}.png`);
     },
     getImage(result) {
-      return require(`${this.resultImg}${result.poster_path}`);
+        if (!result.poster_path) {
+            return require
+        }
+      return (`${this.resultImg}${result.poster_path}`);
     },
   },
 }; 
