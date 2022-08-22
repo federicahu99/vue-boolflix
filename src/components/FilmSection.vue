@@ -23,7 +23,7 @@ h1 {
   margin-bottom: 35px;
 }
 #film-section {
-  margin-bottom: 35px;
+  margin-bottom: 10px;
 
 }
 </style>

@@ -27,13 +27,11 @@ export default {
   margin: 0px auto;
   color: white;
   width: 94vw;
-  padding: 45px;
 }
 
 #series{
   margin: 0px auto;
   color: white;
   width: 94vw;
-  padding: 45px;
 }
 </style>

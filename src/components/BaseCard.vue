@@ -1,31 +1,27 @@
 <template>
   <div class="card">
     <ul v-for="(result, i) in results" :key="i">
-      <li>
-        <h2 id="result-title">{{ result.title || result.name }}</h2>
-      </li>
-      <li>
-        <h3>{{ result.original_title || result.original_name }}</h3>
-      </li>
-      <li>
-        <img
-          :src="getFlag(result)"
-          :alt="result.original_title || result.original_name"
-          v-if="gotFlag(result)"
-          class="flag"
-        />
-        <h3 v-else>{{ result.original_language }}</h3>
-      </li>
-      <li>
-        <span>
-          <i
-            v-for="star in 5"
-            :key="star"
-            class="fa-star"
-            :class="getStars(result) >= star ? 'fa-solid' : 'fa-regular'"
-          ></i
-        ></span>
-        <span> ({{ getStars(result) }})</span>
+      <li class="relative">
+        <div class="absolute">
+          <h2 id="result-title">{{ result.title || result.name }}</h2>
+          <h3>{{ result.original_title || result.original_name }}</h3>
+          <img
+            :src="getFlag(result)"
+            :alt="result.original_title || result.original_name"
+            v-if="gotFlag(result)"
+            class="flag"
+          />
+          <h3 v-else>{{ result.original_language }}</h3>
+          <span>
+            <i
+              v-for="star in 5"
+              :key="star"
+              class="fa-star"
+              :class="getStars(result) >= star ? 'fa-solid' : 'fa-regular'"
+            ></i
+          ></span>
+          <span> ({{ getStars(result) }})</span>
+        </div>
       </li>
       <li>
         <img
@@ -77,11 +73,21 @@ export default {
   justify-content: space-between;
 
   ul {
-    flex-basis: 30%;
-    height: 450px;
+    flex-basis: 25%;
+    height: 380px;
+    
 
-    li {
+    .relative {
       position: relative;
+      display: none;
+
+      .absolute {
+        position: absolute;
+        left: 20%;
+        right: 20%;
+        top: 45px;
+        background-color: none;
+      }
     }
   }
 
@@ -97,6 +103,10 @@ export default {
   .result-img {
     width: 95%;
     height: 350px;
+
+    &:hover + ul {
+      display: block;
+    }
   }
 }
 </style>
