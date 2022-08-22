@@ -1,35 +1,36 @@
 <template>
   <div>
-    <BaseHeader :films-list='films'/>
+    <BaseHeader @searched-text="getResults" />
+    <BaseMain :film="resultFilm" :series="resultSeries"/>
   </div>
 </template>
 
 <script>
 import axios from "axios";
-import BaseHeader from"./components/BaseHeader.vue"
+import BaseHeader from "./components/BaseHeader.vue";
+import BaseMain from "./components/BaseMain.vue";
+
 
 export default {
   name: "App",
-  components: { BaseHeader },
+  components: { BaseHeader, BaseMain},
   data() {
     return {
-      films: [],
-      searchText: "",
-      api: "https://api.themoviedb.org/search/movie?",
+      searchingText: "",
+      resultFilm: [],
+      resultSeries: [],
+      baseUri: "https://api.themoviedb.org/3",
+      api_key: "50df027645bf57ccc3ef82b89c1c311b",
+      query: this.searchingText,
     };
   },
   method: {
-    getAlbums() {
-      const config= {
-        params: {
-          api_key :'50df027645bf57ccc3ef82b89c1c311b',
-          query: this.searchText,
-        }
-      }
+    getResults(searchingText) {
       axios
-        .get(this.api, config)
+        .get(`${this.baseUri}/search/movie?api_key=${this.api_key}&query=${searchingText}`)
         .then((res) => {
-          this.films = res.data.response;
+          this.resultFilm = res.data.response;
+          this.resultSeries = res.data.response;
         })
         .catch((err) => {
           console.log(err);
