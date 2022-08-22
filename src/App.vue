@@ -1,7 +1,7 @@
 <template>
   <div>
     <BaseHeader @searched-text="getResults" />
-    <BaseMain :resultFilm="resultFilm" :resultSeries="resultSeries"/>
+    <BaseMain :resultFilm="resultFilm" :resultSeries="resultSeries" />
   </div>
 </template>
 
@@ -24,8 +24,14 @@ export default {
   },
   methods: {
     getResults(searchingText){
+
+      if (!searchingText){
+        this.resultFilm= [];
+        this.resultSeries= [];
+      } else {
       this.getMoviesResults(searchingText);
       this.getSeriesResults(searchingText);
+      }
     },
     getMoviesResults(searchingText) {
       axios

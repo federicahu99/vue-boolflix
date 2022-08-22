@@ -1,7 +1,7 @@
 <template>
   <div>
     <h2>Movie:</h2>
-    <div v-if="resultFilm === 0">
+    <div v-if="!resultFilm">
       Nessun contenuto trovato
     </div>
     <BaseCard :results="resultFilm" v-else/>
