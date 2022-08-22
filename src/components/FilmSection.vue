@@ -1,24 +1,29 @@
 <template>
-  <div>
-    <h2>Movie:</h2>
-    <div v-if="!resultFilm">
-      Nessun contenuto trovato
-    </div>
-    <BaseCard :results="resultFilm" v-else/>
+  <div id="film-section">
+    <h1>Movies:</h1>
+    <BaseCard :results="resultFilm" />
   </div>
 </template>
 
 <script>
-import BaseCard from "./BaseCard.vue"
+import BaseCard from "./BaseCard.vue";
 
 export default {
   name: "filmSection",
-  components: { BaseCard }, 
+  components: { BaseCard },
   props: {
     resultFilm: Array,
   },
 };
 </script>
 
-<style>
+<style scoped lang="scss">
+h1 {
+  color: red;
+  margin-bottom: 35px;
+}
+#film-section {
+  margin-bottom: 35px;
+
+}
 </style>

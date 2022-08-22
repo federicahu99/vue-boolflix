@@ -2,7 +2,7 @@
   <div>
     <input
       type="text"
-      placeholder="inserisci nome del film/serie"
+      placeholder="Inserisci nome del film/serie"
       v-model.trim="text"
       @keyup.enter="searchText"
     />
@@ -28,7 +28,18 @@ export default {
 };
 </script>
 
-<style scoped>
-
+<style scoped lang="scss">
+  input {
+    background-color: aliceblue;
+    border-color: grey;
+    width: 250px;
+    padding: 10px;
+  }
+  button {
+    background-color: red;
+    border-color: grey;
+    width: 70px;
+    padding: 10px;
+    font-size: 18px;
+  }
 </style>
-```

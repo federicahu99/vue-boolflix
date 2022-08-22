@@ -1,7 +1,8 @@
 <template>
   <div>
     <BaseHeader @searched-text="getResults" />
-    <BaseMain :resultFilm="resultFilm" :resultSeries="resultSeries" />
+    <div v-if="!resultFilm && !resultSeries"></div>
+    <BaseMain v-else :resultFilm="resultFilm" :resultSeries="resultSeries" />
   </div>
 </template>
 
@@ -9,7 +10,6 @@
 import axios from "axios";
 import BaseHeader from "./components/BaseHeader.vue";
 import BaseMain from "./components/BaseMain.vue";
-
 
 export default {
   name: "App",
@@ -58,4 +58,5 @@ export default {
 </script>
 
 <style lang="scss">
+@import "./assets/scss/style.scss";
 </style>

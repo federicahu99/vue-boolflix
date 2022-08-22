@@ -1,10 +1,7 @@
 <template>
-  <div>
-    <h2>Series:</h2>
-    <div v-if="!resultSeries">
-      Nessun contenuto trovato
-    </div>
-    <BaseCard :results="resultSeries" v-else/>
+  <div id="series-section">
+    <h1>Series:</h1>
+    <BaseCard :results="resultSeries"/>
   </div>
 </template>
 
@@ -20,5 +17,16 @@ export default {
 };
 </script>
 
-<style>
+<style scoped lang="scss">
+
+h1 {
+color: red;
+margin: 35px 0px; 
+}
+
+#series-section {
+  margin-bottom: 35px;
+  display:flex;
+}
+
 </style>

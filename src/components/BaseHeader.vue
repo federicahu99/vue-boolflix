@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <h1>Booflix</h1>
+  <div id="header">
+    <h1>BOOfliX</h1>
     <BaseSearch @searched-text="searchText"/>
   </div>
 </template>
@@ -20,6 +20,21 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+
+  #header{
+    background-color: #343434;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+
+    h1{
+      background-color: #343434;
+      color: red;
+      font-size: 40px;
+    }
+    }
+
 
 </style>

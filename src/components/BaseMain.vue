@@ -1,7 +1,10 @@
 <template>
-  <div>
-    <FilmSection id="films" :resultFilm="resultFilm"  />
-    <SeriesSection id="series" :resultSeries="resultSeries"/>
+  <div id="container">
+    <div>
+      <FilmSection id="films" :resultFilm="resultFilm" />
+      <SeriesSection id="series" :resultSeries="resultSeries" />
+    </div>
+      <!-- <div v-else="!resultSeries && !resultFilm "> Comincia a cercare subito!</div> -->
   </div>
 </template>
 
@@ -10,7 +13,7 @@ import FilmSection from "./FilmSection.vue";
 import SeriesSection from "./SeriesSection.vue";
 
 export default {
-  name: 'BaseMain',
+  name: "BaseMain",
   components: { FilmSection, SeriesSection },
   props: {
     resultSeries: Array,
@@ -19,5 +22,18 @@ export default {
 };
 </script>
 
-<style>
+<style scoped lang="scss">
+#films {
+  margin: 0px auto;
+  color: white;
+  width: 94vw;
+  padding: 45px;
+}
+
+#series{
+  margin: 0px auto;
+  color: white;
+  width: 94vw;
+  padding: 45px;
+}
 </style>

@@ -1,17 +1,20 @@
 <template>
-  <div>
-    <ul v-for="(result, i) in results" :key="i" class="card">
-      <h1>{{ result.title || result.name }}</h1>
+  <div class="card">
+    <ul v-for="(result, i) in results" :key="i">
       <li>
-        <h2>{{ result.original_title || result.original_name }}</h2>
+        <h2 id="result-title">{{ result.title || result.name }}</h2>
+      </li>
+      <li>
+        <h3>{{ result.original_title || result.original_name }}</h3>
       </li>
       <li>
         <img
           :src="getFlag(result)"
           :alt="result.original_title || result.original_name"
           v-if="gotFlag(result)"
+          class="flag"
         />
-        <h2 v-else>{{ result.original_language }}</h2>
+        <h3 v-else>{{ result.original_language }}</h3>
       </li>
       <li>
         <span>
@@ -28,6 +31,7 @@
         <img
           :src="getImage(result)"
           :alt="result.original_title || result.original_name"
+          class="result-img"
         />
       </li>
     </ul>
@@ -64,5 +68,35 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
+.card {
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 25px;
+  justify-content: space-between;
+
+  ul {
+    flex-basis: 30%;
+    height: 450px;
+
+    li {
+      position: relative;
+    }
+  }
+
+  h2 {
+    color: red;
+    margin: 10px 0;
+  }
+
+  .flag {
+    width: 40px;
+  }
+
+  .result-img {
+    width: 95%;
+    height: 350px;
+  }
+}
 </style>
