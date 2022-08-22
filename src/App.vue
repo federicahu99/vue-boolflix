@@ -1,7 +1,7 @@
 <template>
   <div>
     <BaseHeader @searched-text="getResults" />
-    <BaseMain :film="resultFilm" :series="resultSeries"/>
+    <BaseMain :resultFilm="resultFilm" :resultSeries="resultSeries"/>
   </div>
 </template>
 
@@ -16,21 +16,32 @@ export default {
   components: { BaseHeader, BaseMain},
   data() {
     return {
-      searchingText: "",
       resultFilm: [],
       resultSeries: [],
       baseUri: "https://api.themoviedb.org/3",
-      api_key: "50df027645bf57ccc3ef82b89c1c311b",
-      query: this.searchingText,
+      api_key: "?api_key=50df027645bf57ccc3ef82b89c1c311b",
     };
   },
-  method: {
-    getResults(searchingText) {
+  methods: {
+    getResults(searchingText){
+      this.getMoviesResults(searchingText);
+      this.getSeriesResults(searchingText);
+    },
+    getMoviesResults(searchingText) {
       axios
-        .get(`${this.baseUri}/search/movie?api_key=${this.api_key}&query=${searchingText}`)
+        .get(`${this.baseUri}/search/movie${this.api_key}&query=${searchingText}`)
         .then((res) => {
-          this.resultFilm = res.data.response;
-          this.resultSeries = res.data.response;
+          this.resultFilm = res.data.results;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    getSeriesResults(searchingText) {
+      axios
+        .get(`${this.baseUri}/search/tv${this.api_key}&query=${searchingText}`)
+        .then((res) => {
+          this.resultSeries = res.data.results;
         })
         .catch((err) => {
           console.log(err);

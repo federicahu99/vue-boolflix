@@ -1,7 +1,7 @@
 <template>
   <div>
-    <FilmSection id="films"/>
-    <SeriesSection id="series"/>
+    <FilmSection id="films" :resultFilm="resultFilm"  />
+    <SeriesSection id="series" :resultSeries="resultSeries"/>
   </div>
 </template>
 
@@ -10,14 +10,14 @@ import FilmSection from "./FilmSection.vue";
 import SeriesSection from "./SeriesSection.vue";
 
 export default {
- components: { FilmSection, SeriesSection },
- props: {
-        resultSeries: Array,
-        resultFilms: Array
-    }
-}
+  name: 'BaseMain',
+  components: { FilmSection, SeriesSection },
+  props: {
+    resultSeries: Array,
+    resultFilm: Array,
+  },
+};
 </script>
 
 <style>
-
 </style>

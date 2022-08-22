@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Booflix</h1>
-    <BaseSearch @searched-text='searchingText'/>
+    <BaseSearch @searched-text="searchText"/>
   </div>
 </template>
 
@@ -12,14 +12,9 @@ export default {
   components:  {
     BaseSearch,
   },
-  data () {
-    return {
-      searchingText: '',
-    }
-  },
    methods: {
-    searchText() {
-      this.$emit("searched-text", this.searchingText);
+    searchText(text) {
+      this.$emit("searched-text", text);
     },
   },
 }
