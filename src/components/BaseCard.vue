@@ -14,7 +14,15 @@
         <h2 v-else>{{ result.original_language }}</h2>
       </li>
       <li>
-        <h2>{{ result.vote_average }}</h2>
+        <span>
+          <i
+            v-for="star in 5"
+            :key="star"
+            class="fa-star"
+            :class="getStars(result) >= n ? 'fa-solid' : 'fa-regular'"
+          ></i
+        ></span>
+        <span> ({{ getStars(result) }})</span>
       </li>
       <li>
         <img
@@ -44,13 +52,16 @@ export default {
       return require(`../assets/img/${result.original_language}.png`);
     },
     getImage(result) {
-        if (!result.poster_path) {
-            return require
-        }
-      return (`${this.resultImg}${result.poster_path}`);
+      if (!result.poster_path) {
+        return "https://adriaticaindustriale.it/wp-content/uploads/2020/02/not-found.png";
+      }
+      return `${this.resultImg}${result.poster_path}`;
+    },
+    getStars(result) {
+      return Math.ceil(result.vote_average / 2);
     },
   },
-}; 
+};
 </script>
 
 <style>
