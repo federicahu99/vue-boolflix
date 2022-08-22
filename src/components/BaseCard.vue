@@ -6,7 +6,7 @@
         <h2>{{ result.original_title || result.original_name }}</h2>
       </li>
       <li>
-        <img :src="getFlag" :alt="result.original_language" v-if="gotFlag" />
+        <img :src="getFlag(result)" :alt="result.original_language" v-if="gotFlag(result)" />
         <h2 v-else>{{ result.original_language }}</h2>
       </li>
       <li>
@@ -17,20 +17,19 @@
 </template>
 
 <script>
-
 export default {
-  props: { results: Object },
+  name: "BaseCard",
+  props: { results: Array },
   methods: {
-    gotFlag() {
-      const flag= [ "it", "en" ];
-      return flag.includes(result.original_language)
+    gotFlag(result) {
+      const flag = ["it", "en"];
+      return flag.includes(result.original_language);
+    },
+    getFlag(result) {
+        console.log(result)
+      return require(`../assets/img/${result.original_language}.png`);
     },
   },
-  computed: {
-    getFlag() {
-        return require(`../assets/img/${result.original_language}.png`);
-    }
-  }
 };
 </script>
 
