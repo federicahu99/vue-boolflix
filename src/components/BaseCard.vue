@@ -19,7 +19,7 @@
             v-for="star in 5"
             :key="star"
             class="fa-star"
-            :class="getStars(result) >= n ? 'fa-solid' : 'fa-regular'"
+            :class="getStars(result) >= star ? 'fa-solid' : 'fa-regular'"
           ></i
         ></span>
         <span> ({{ getStars(result) }})</span>
