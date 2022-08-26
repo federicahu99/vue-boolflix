@@ -75,19 +75,17 @@ export default {
   ul {
     flex-basis: 25%;
     height: 380px;
-    
 
     .relative {
       position: relative;
-      display: none;
-
-      .absolute {
-        position: absolute;
-        left: 20%;
-        right: 20%;
-        top: 45px;
-        background-color: none;
-      }
+     
+    }
+    .absolute {
+      position: absolute;
+      left: 20%;
+      right: 20%;
+      top: 45px;
+      background-color: none;
     }
   }
 
@@ -103,10 +101,6 @@ export default {
   .result-img {
     width: 95%;
     height: 350px;
-
-    &:hover + ul {
-      display: block;
-    }
   }
 }
 </style>
